@@ -18,20 +18,17 @@ function Header() {
 
         {/* Menus em Desktop */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#inicio" className="hover:text-azul-claro transition">
             Início
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#sobre-mim" className="hover:text-azul-claro transition">
             Sobre mim
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#experiencia" className="hover:text-azul-claro transition">
             Experiência
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#educacao" className="hover:text-azul-claro transition">
             Educação
-          </a>
-          <a href="#" className="hover:text-azul-claro transition">
-            Projetos
           </a>
           <a href="https://wa.me/5521964757037?text=Olá,%20gostaria%20de%20entrar%20em%20contato%20para%20consultorias%20estratégicas,%20conselhos%20executivos%20ou%20convites%20para%20palestras%20e%20aulas" target="_blank" rel="noopener noreferrer" className="bg-azul text-white px-4 py-2 rounded-md hover:bg-[#BEDDFF] hover:text-azul">
             Entrar em Contato
@@ -53,20 +50,17 @@ function Header() {
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex flex-col items-start px-4 gap-4 py-4">
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#inicio" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Início
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#sobre-mim" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Sobre mim
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#experiencia" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Experiência
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#educacao" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Educação
-          </a>
-          <a href="#" className="hover:text-azul-claro transition">
-            Projetos
           </a>
           <a href="https://wa.me/5521964757037?text=Olá,%20gostaria%20de%20entrar%20em%20contato%20para%20consultorias%20estratégicas,%20conselhos%20executivos%20ou%20convites%20para%20palestras%20e%20aulas" target="_blank" rel="noopener noreferrer" className="bg-azul text-white px-4 py-2 rounded-md hover:bg-[#BEDDFF] hover:text-azul">
             Entrar em Contato

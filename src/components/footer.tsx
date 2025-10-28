@@ -19,20 +19,17 @@ function Footer() {
 
                 {/* Menus em Desktop */}
                 <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-                    <a href="#" className="hover:text-azul-claro transition">
+                    <a href="#inicio" className="hover:text-azul-claro transition">
                         Início
                     </a>
-                    <a href="#" className="hover:text-azul-claro transition">
+                    <a href="#sobre-mim" className="hover:text-azul-claro transition">
                         Sobre mim
                     </a>
-                    <a href="#" className="hover:text-azul-claro transition">
+                    <a href="#experiencia" className="hover:text-azul-claro transition">
                         Experiência
                     </a>
-                    <a href="#" className="hover:text-azul-claro transition">
+                    <a href="#educacao" className="hover:text-azul-claro transition">
                         Educação
-                    </a>
-                    <a href="#" className="hover:text-azul-claro transition">
-                        Projetos
                     </a>
                 </nav>
 
@@ -65,20 +62,17 @@ function Footer() {
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex flex-col items-start px-4 gap-4 py-4">
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#inicio" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Início
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#sobre-mim" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Sobre mim
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#experiencia" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Experiência
           </a>
-          <a href="#" className="hover:text-azul-claro transition">
+          <a href="#educacao" onClick={toggleMenu} className="hover:text-azul-claro transition">
             Educação
-          </a>
-          <a href="#" className="hover:text-azul-claro transition">
-            Projetos
           </a>
           <a href="" className="bg-azul hover:bg-azul-claro text-white px-4 py-2 rounded-md">
             Entrar em Contato

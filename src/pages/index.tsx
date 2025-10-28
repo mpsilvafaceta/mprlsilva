@@ -4,15 +4,29 @@ import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import { PiSuitcaseSimple } from "react-icons/pi";
 import { AiOutlinePicture } from "react-icons/ai";
 import Footer from "@/components/footer";
+import { useState } from "react";
 
 
 export default function Home() {
+  const [selectedTab, setSelectedTab] = useState("formacao");
+  const [expandedTabs, setExpandedTabs] = useState({
+    formacao: false,
+    eventos: false,
+    publicacoes: false,
+  });
+
+type TabKey = "formacao" | "eventos" | "publicacoes";
+
+const toggleExpand = (tab: TabKey) => {
+  setExpandedTabs((prev) => ({ ...prev, [tab]: !prev[tab] }));
+};
+  
   return (
     <main className="w-full font-poppins flex flex-col">
       <Header/>
       <div className="lg:justify-center  flex flex-col gap-6 items-center">
         <div className="w-full">
-          <div className="bg-[url('/image%20hero%201.svg')] bg-cover flex justify-center">
+          <div id="inicio" className="bg-[url('/image%20hero%201.svg')] bg-cover flex justify-center">
             <div className="w-full max-w-[1440px] p-4 lg:px-[96px] lg:py-[202px]">
               <div className="lg:max-w-[752px] flex flex-col justify-start gap-6">
                 <div className="flex flex-col gap-4 text-white">
@@ -27,7 +41,7 @@ export default function Home() {
                   <a href="https://wa.me/5521964757037?text=Olá,%20gostaria%20de%20entrar%20em%20contato%20para%20consultorias%20estratégicas,%20conselhos%20executivos%20ou%20convites%20para%20palestras%20e%20aulas" target="_blank" rel="noopener noreferrer" className="bg-white hover:bg-[#BEDDFF] flex items-center justify-center border-azul text-azul px-4 py-3 rounded-[4px]">
                     Entrar em Contato
                   </a>
-                  <a href="" className="bg-azul hover:bg-white flex items-center justify-center border border-white text-white hover:text-azul px-4 py-3 rounded-[4px]">
+                  <a href="#sobre-mim" className="bg-azul hover:bg-white flex items-center justify-center border border-white text-white hover:text-azul px-4 py-3 rounded-[4px]">
                     Saber mais
                   </a>
                 </div>
@@ -35,87 +49,57 @@ export default function Home() {
 
             </div>
           </div>
-          <div className="bg-white flex justify-center">
+          <div id="sobre-mim" className="bg-white flex justify-center">
             <div className="w-full max-w-[1440px] p-4 lg:py-[64px] lg:pt-[64px] lg:px-[96px] flex flex-col gap-8 lg:gap-[64px]">
-              <div className="flex flex-col justify-center items-center gap-[32px]">
-                <p className="text-[32px] leading-[40px] flex text-center text-azul font-semibold">
-                  Saiba como eu posso te ajudar
-                </p>
-                <div className="flex flex-col lg:flex-row w-full gap-[24px]">
-                  <div className="flex flex-col items-center text-center border border-cinza-borda p-4 gap-4 rounded-[12px] outline outline-1 outline-gray-300 flex-1">
-                    <div className="p-[22px]">
-                      <PiSuitcaseSimple className="text-azul w-[44px] h-[44px]"/>
-                    </div>
-                    <p className="text-azul text-[22px] leading-[32px]">Consultoria Estratégica</p>
-                    <p className="text-center text-preto text-[16px] leading-[24px]">Posicionamento da empresa e na direção de longo prazo, e não apenas em processos operacionais.</p>
-                  </div>
-                  <div className="flex flex-col items-center text-center border border-cinza-borda p-4 gap-4 rounded-[12px] outline outline-1 outline-gray-300 flex-1">
-                    <div className="p-[22px]">
-                      <FaRegHandshake className="text-azul w-[44px] h-[44px]"/>
-                    </div>
-                    <p className="text-azul text-[22px] leading-[32px]">Convites</p>
-                    <p className="text-center text-preto text-[16px] leading-[24px]">Experiência de alto nível para fornecer orientação estratégica, insights e apoio no desenvolvimento de liderança.</p>
-                  </div>
-                  <div className="flex flex-col items-center text-center border border-cinza-borda p-4 gap-4 rounded-[12px] outline outline-1 outline-gray-300 flex-1">
-                    <div className="p-[22px]">
-                      <HiOutlineChatBubbleLeftRight className="text-azul w-[44px] h-[44px]"/>
-                    </div>
-                    <p className="text-azul text-[22px] leading-[32px]">Consultoria Estratégica</p>
-                    <p className="text-center text-preto text-[16px] leading-[24px]">Do Insight à Ação de Alto Impacto: Convide-me para palestras e aulas que transformam a visão executiva em resultados concretos.</p>
-                  </div>
+              <div className="flex flex-col gap-6 lg:flex-row">
+                <div className="flex w-full lg:max-w-[402px] justify-center">
+                    <img className="flex lg:hidden" src="/IMG_6388 2 (3).svg" alt="" />
+                    <img className="lg:flex hidden" src="/IMG_6388 2 (4).svg" alt="" />
                 </div>
-              </div>
-              <div className="flex flex-col gap-6 lg:flex-row-reverse">
                 <div className="flex flex-col">
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col">
                       <p className="text-azul text-[16px] leading-[24px]">Sobre mim</p>
-                      <p className="text-azul text-[26px] leading-[32px] lg:text-[32px] lg:leading-[40px] text-justify">Conheça Marcos Silva - Consultoria pessoal para mudar o que precisa</p>
+                      <p className="text-azul text-[26px] leading-[32px] lg:text-[32px] lg:leading-[40px] text-justify">Torna-te quem tu és — para mudar o que precisa</p>
                     </div>
                     <p className="text-azul text-[16px] leading-[24px] lg:leading-[22px] text-justify">
-                      Sou Marcos Paulo Silva, um líder com formação em Administração pela UFRRJ (2004)
-                      e uma carreira sólida, focada em tecnologia, gestão estratégica e inovação.<br /><br />
-                      Como CIO (Chief Information Officer), lidero a visão e execução de projetos que estão
-                      ativamente moldando o futuro de nossa empresa.
+                      Sou Marcos Silva, um líder com mais de 30 anos de experiência sólida e comprovada em tecnologia, gestão estratégica, inovação, transformação digital e inteligência artificial.
+                      <br /><br />
+                      Ao longo da carreira, atuei na liderança de projetos, transformando desafios complexos em resultados tangíveis - modernizando operações, otimizando processos e criando valor real para empresas e pessoas.
+                      <br /><br />
+                      Como CIO (Chief Information Officer), minha missão é conectar estratégia e execução, tecnologia e propósito, sempre com foco em entregar soluções que gerem impacto e sustentem o crescimento organizacional.
+                      <br /><br />
+                      Por acreditar que conhecimento só tem valor quando é compartilhado, dedico parte do meu tempo a palestras e aulas, levando à prática o que vivi em campo. Nesses espaços, discuto temas essenciais para o futuro dos negócios — liderança, inovação, transformação digital e o papel da inteligência artificial na construção de organizações mais humanas e eficientes.
                     </p>
-                  </div>
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col pt-6">
-                      <p className="text-azul text-[22px] leading-[32px]">Conhecimento e Compartilhamento</p>
-                    </div>
-                    <p className="text-azul text-[16px] leading-[24px] text-justify">
-                      Com o objetivo de multiplicar o conhecimento adquirido ao longo de minha trajetória, dedico parte do meu tempo a palestras e aulas acadêmicas. Nesses espaços, abordo temas cruciais para o sucesso no cenário atual:
-                    </p>
-                    <ul className="list-disc pl-5 pb-6 text-azul text-[16px] leading-[24px]">
-                      <li><span className="font-semibold">Liderança</span></li>
-                      <li><span className="font-semibold">Administração de Negócios</span></li>
-                      <li><span className="font-semibold">O Futuro da Tecnologia</span></li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-1 border border-azul flex flex-col rounded-[6px] items-center p-4">
-                      <p className="text-azul text-[32px] leading-[40px]">34+</p>
-                      <p className="text-azul text-[20px] leading-[28px]">Anos de experiência</p>
-                    </div>
-                    <div className="flex-1 border border-azul flex flex-col rounded-[6px] items-center p-4">
-                      <p className="text-azul text-[32px] leading-[40px]">200+</p>
-                      <p className="text-azul text-[20px] leading-[28px]">Projetos finalizados</p>
-                    </div>
-                    <div className="flex-1 border border-azul flex flex-col rounded-[6px] items-center p-4">
-                      <p className="text-azul text-[32px] leading-[40px]">97%</p>
-                      <p className="text-azul text-[20px] leading-[28px]">Clientes satisfeitos</p>
-                    </div>
                   </div>
                 </div>
-
-                <div className="flex w-full lg:max-w-[402px] justify-center">
-                    <img className="flex lg:hidden" src="/img_perfil.svg" alt="" />
-                    <img className="lg:flex hidden" src="/img_perfil_desktop.svg" alt="" />
+              </div>
+              <div className="flex flex-col gap-6 lg:px-10">
+                <div>
+                  <p className="text-center text-azul text-[32px] leading-[40px] lg:text-[40px] lg:leading-[52px]">Como posso contribuir para a evolução do seu Negócio</p>
+                </div>
+                <div className="flex flex-col lg:flex-row text-center">
+                  <div className="flex flex-col p-4 gap-4 flex-1">
+                    <p className="text-azul text-[22px] leading-[32px]">Participação em Conselhos</p>
+                    <p className="text-azul text-[16px] leading-[24px]">Participação em Conselhos - Contribuindo com uma visão estratégica orientada à inovação, tecnologia e sustentabilidade corporativa.</p>
+                  </div>
+                  <div className="flex lg:hidden bg-azul w-full h-[2px]"></div>
+                  <div className="hidden lg:flex bg-azul w-[2px] h-full"></div>
+                  <div className="flex flex-col p-4 gap-4 flex-1">
+                    <p className="text-azul text-[22px] leading-[32px]">Palestras e Aulas</p>
+                    <p className="text-azul text-[16px] leading-[24px]">Conhecimento que inspira transformação - Palestras e aulas voltadas a líderes, estudantes e equipes que desejam compreender e aplicar os pilares da inovação, transformação digital e inteligência artificial.</p>
+                  </div>
+                  <div className="flex lg:hidden bg-azul w-full h-[2px]"></div>
+                  <div className="hidden lg:flex bg-azul w-[2px] h-full"></div>
+                  <div className="flex flex-col p-4 gap-4 flex-1">
+                    <p className="text-azul text-[22px] leading-[32px]">Consultoria Estratégica</p>
+                    <p className="text-azul text-[16px] leading-[24px]">Estratégia, tecnologia e impacto em movimento - Empresas que buscam evoluir seus modelos de negócio, redesenhar processos e gerar valor sustentável por meio da tecnologia e da inovação.</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-azul flex justify-center">
+          <div id="experiencia" className="bg-azul flex justify-center">
             <div className="w-full max-w-[1440px] lg:py-[64px] p-4 lg:px-[96px] bg-azul flex flex-col gap-8 justify-center">
               <div className="flex flex-col w-full gap-6 ">
                 <p className="text-[32px] leading-[40px] text-white">Projetos de Liderança em Inovação e Transformação Digital</p>
@@ -158,70 +142,399 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#EFF6FF] flex justify-center">
+          <div id="educacao" className="bg-[#EFF6FF] flex justify-center">
             <div className="w-full max-w-[1440px] p-4 lg:py-[64px] lg:px-[96px] flex flex-col gap-8 justify-center">
               <div className="w-gull flex justify-start">
                 <p className="text-[32px] leading-[42px] text-azul font-bold">Educação</p>
               </div>
               <div className="flex flex-col lg:justify-between lg:flex-row gap-4 text-[22px] leading-[32px]">
                 <div className="flex flex-col gap-6 lg:w-[348px]">
-                  <a className="text-[#7BBCFE] hover:text-azul" href="">Formação Acadêmica</a>
-                  <a className="text-[#737373] hover:text-azul" href="">Eventos e Publicações de Relevância Profissional</a>
-                  <a className="text-[#737373] hover:text-azul" href="">Outros</a>
-                </div>
-                <div className="flex flex-col gap-5 lg:w-[720px]">
-                  <div className="flex flex-col gap-5 py-5">
-                    <div className="flex flex-col gap-5">
-                      <p className="text-azul font-bold text-[16px] leading-[24px]">mai de 2025 - set de 2025</p>
-                      <p className="text-azul font-bold text-[22px] leading-[32px]">ISE Business School</p>
-                    </div>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">Curso de atualização</p>
-                    <p className="text-azul text-[16px] leading-[24px]">Advanced Board Leaders Program, Executivos de alto nível , Conselhos de administração e Governança CorporativaAdvanced Board Leaders Program, Executivos de alto nível , Conselhos de administração e Governança Corporativa</p>
-                    <p className="text-azul text-[16px] leading-[24px]">Programa executivo de alto nível voltado à formação de líderes para atuação em Conselhos de Administração e comitês estratégicos. Com foco em tomada de decisão em ambientes complexos, o curso combina os fundamentos da governança corporativa com uma abordagem contemporânea voltada à inovação, transformação digital e pensamento estratégico. Por meio de estudos de caso, trocas entre pares e experiências práticas, o programa capacita executivos a contribuírem de forma efetiva para a criação de valor sustentável, impulsionando mudanças relevantes nas organizações e na sociedade.</p>
-                  </div>
-                  <div className="h-[1px] bg-[#E7E7E6]"></div>
-                  <div className="flex flex-col gap-5 py-5">
-                    <div className="flex flex-col gap-5">
-                      <p className="text-azul font-bold text-[16px] leading-[24px]">fev de 2024 - jun de 2025</p>
-                      <p className="text-azul font-bold text-[22px] leading-[32px]">Universidade Federal Fluminense</p>
-                    </div>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">Stricto Sensu</p>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">Mestrando em Engenharia de Produção</p>
-                    <p className="text-azul text-[16px] leading-[24px]">O programa de Mestrado em Engenharia de Produção com especialização em tomada de decisão proporciona uma abordagem academicamente robusta para o ensino das técnicas fundamentais da Pesquisa Operacional, com uma ênfase na sua aplicação prática em cenários reais. Com a cuidadosa seleção de disciplinas e atividades de pesquisa, os estudantes são instigados a explorar profundamente os princípios teóricos e aplicá-los em contextos concretos.
-                    O programa visa dotar os estudantes com uma sólida fundamentação matemática e habilidades analíticas críticas, preparando-os para empregar métodos quantitativos avançados na resolução de desafios reais enfrentados por organizações, incluindo empresas, entidades governamentais e instituições do setor público.
-                    Após a conclusão os graduados estarão capacitados para analisar, modelar e resolver uma ampla gama de problemas práticos, contribuindo para o avanço do conhecimento e para o aprimoramento da eficiência e eficácia em diversos setores da sociedade.</p>
-                  </div>
-                  <div className="h-[1px] bg-[#E7E7E6]"></div>
-                  <div className="flex flex-col gap-5 py-5">
-                    <div className="flex flex-col gap-5">
-                      <p className="text-azul font-bold text-[16px] leading-[24px]">jan de 2023 - fev de 2024</p>
-                      <p className="text-azul font-bold text-[22px] leading-[32px]">Ibmec</p>
-                    </div>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">Pós-graduação Lato Sensu - MBA</p>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">CIO & IT </p>
-                    <p className="text-azul text-[16px] leading-[24px]">Como líder reconhecido na capacitação executiva, o IBMEC reconhece que os profissionais de tecnologia mais valorizados são aqueles que possuem uma combinação única de habilidades técnicas sólidas, visão estratégica empresarial e capacidade de liderança excepcional.</p>
-                    <p className="text-azul text-[16px] leading-[24px]">Este programa é projetado para capacitar profissionais a assumirem papéis de liderança na condução eficaz de processos de transformação digital em organizações de todos os portes. A nossa abordagem, centrada no participante, visa aprimorar e desenvolver competências essenciais, capacitando os participantes a implementar e otimizar métodos de gestão de segurança da informação e protocolos de proteção de dados em ambientes corporativos. Além disso, o programa enfatiza a otimização de recursos tecnológicos e estratégicos, preparando os participantes para guiar suas empresas rumo a novos patamares de sucesso.</p>
-                  </div>
-                  <div className="h-[1px] bg-[#E7E7E6]"></div>
-                  <div className="flex flex-col gap-5 py-5">
-                    <div className="flex flex-col gap-5">
-                      <p className="text-azul font-bold text-[16px] leading-[24px]">jan de 2022 - dez de 2023</p>
-                      <p className="text-azul font-bold text-[22px] leading-[32px]">Instituto de Capacitação Business School Brasil</p>
-                    </div>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">MBA</p>
-                    <p className="text-azul font-bold text-[16px] leading-[24px]">Operational Research and decision making</p>
+                  <button
+                    onClick={() => setSelectedTab("formacao")}
+                    className={`text-left ${
+                      selectedTab === "formacao"
+                        ? "text-[#7BBCFE]"
+                        : "text-[#737373] hover:text-azul"
+                    }`}
+                  >
+                    Formação Acadêmica
+                  </button>
+                  <button
+                    onClick={() => setSelectedTab("eventos")}
+                    className={`text-left ${
+                      selectedTab === "eventos"
+                        ? "text-[#7BBCFE]"
+                        : "text-[#737373] hover:text-azul"
+                    }`}
+                  >
+                    Eventos e Publicações de Relevância Profissional
+                  </button>
 
-                    <p className="text-azul text-[16px] leading-[24px]">Instituto de Capacitação Business School mergulha fundo no estudo dos métodos analíticos mais avançados, visando aprimorar a tomada de decisões em uma ampla gama de tópicos e aplicações. 
-                    Nossas disciplinas obrigatórias abrangem áreas cruciais, como estatística, probabilidade e metodologia de algoritmos, proporcionando uma base sólida para a compreensão e aplicação desses conceitos fundamentais. Além disso, os participantes terão a oportunidade de explorar temas avançados, como formulação de problemas de programação linear, métodos de auxílio à decisão multicritério, teoria das filas e muito mais.
-                    <br />
-                    Ao final do curso, os alunos estarão plenamente equipados com habilidades em gerenciamento avançado de dados e otimização, capacitando-os a assumir papéis de liderança em uma variedade de setores e organizações.</p>
-                  </div>
-                  <div className="h-[1px] bg-[#E7E7E6]"></div>
-                  <a className="flex justify-center items-center rounded-[4px] border border-azul bg-white text-azul w-full py-2 hover:bg-[#BEDDFF]" href="https://www.linkedin.com/in/mprlsilva/details/education/" target="_blank" rel="noopener noreferrer" >Ver tudo</a>
+                  <button
+                    onClick={() => setSelectedTab("publicacoes")}
+                    className={`text-left ${
+                      selectedTab === "publicacoes"
+                        ? "text-[#7BBCFE]"
+                        : "text-[#737373] hover:text-azul"
+                    }`}
+                  >
+                    Publicações e Produções Acadêmicas
+                  </button>
                 </div>
+                {selectedTab === "formacao" && (
+                  <div className="flex flex-col gap-5 lg:w-[720px]">
+                    <div className="flex flex-col gap-6">
+                      <p className="text-[#7BBCFE] text-[32px] leading-[40px]">Formação Acadêmica e Executiva</p>
+                      <p className="text-[#333333] text-[16px] leading-[22px]">Minha formação acadêmica reflete uma trajetória voltada à excelência em gestão, inovação e governança corporativa, combinando experiência executiva com sólida base acadêmica. Ao longo dos anos, investi consistentemente no aperfeiçoamento técnico e estratégico, com foco em tomada de decisão, otimização de processos e liderança em ambientes digitais e complexos.</p>
+                    </div>
+                    <div className="flex lg:flex-row flex-col py-5 gap-5">
+                      <div className="flex flex-[1] flex-col gap-5">
+                        <p className="text-azul font-bold text-[22px] leading-[32px]">ISE Business School</p>
+                      </div>
+                      <div className="flex flex-col gap-6 flex-[2]">
+                        <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Formação executiva voltada à atuação estratégica em conselhos de administração.</p>
+                        <p className="text-azul  text-[16px] leading-[24px]">Programa avançado de desenvolvimento de líderes e conselheiros corporativos, com foco em governança, ética empresarial, sucessão e tomada de decisão estratégica. A formação fortalece competências essenciais para atuação em Boards e Advisory Boards, aprimorando a visão de longo prazo e a capacidade de direcionar organizações em cenários de alta complexidade.</p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-[#E7E7E6]"></div>
+                    <div className="flex lg:flex-row flex-col py-5 gap-5">
+                      <div className="flex flex-[1] flex-col gap-5">
+                        <p className="text-azul font-bold text-[22px] leading-[32px] ">Universidade Federal Fluminense – Mestrado em Engenharia de Produção</p>
+                      </div>
+                      <div className="flex flex-col gap-6 flex-[2]">
+                        <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Pesquisa aplicada em otimização de processos e tomada de decisão estratégica.</p>
+                        <p className="text-azul  text-[16px] leading-[24px]">Mestrado stricto sensu com ênfase em Otimização de Processos, Planejamento Estratégico e Métodos Multicritério de Apoio à Decisão (MCDA). A pesquisa acadêmica alia modelos quantitativos, inovação tecnológica e análise de dados para aprimorar a eficiência corporativa e sustentar decisões em contextos incertos, reforçando a integração entre ciência e gestão.</p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-[#E7E7E6]"></div>
+                    <div className="flex lg:flex-row flex-col py-5 gap-5">
+                      <div className="flex flex-[1] flex-col gap-5">
+                        <p className="text-azul font-bold text-[22px] leading-[32px] ">Ibmec – MBA em CIO & IT Management</p>
+                      </div>
+                      <div className="flex flex-col gap-6 flex-[2]">
+                        <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Especialização executiva em liderança tecnológica e gestão da transformação digital.</p>
+                        <p className="text-azul  text-[16px] leading-[24px]">Formação voltada à gestão estratégica de tecnologia da informação, capacitando executivos para liderar projetos de inovação, governança de TI e modernização de processos corporativos. O curso fortalece competências em planejamento tecnológico, gestão de times de alta performance e alinhamento entre TI e objetivos de negócio.</p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-[#E7E7E6]"></div>
+                    <div className="flex lg:flex-row flex-col py-5 gap-5">
+                      <div className="flex flex-[1] flex-col gap-5">
+                        <p className="text-azul font-bold text-[22px] leading-[32px] ">Business School Brasil – MBA em Pesquisa Operacional e Tomada de Decisão</p>
+                      </div>
+                      <div className="flex flex-col gap-6 flex-[2]">
+                        <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Aplicação de modelos analíticos e preditivos para decisões corporativas complexas.</p>
+                        <p className="text-azul  text-[16px] leading-[24px]">MBA direcionado à aplicação de Pesquisa Operacional e Métodos Quantitativos em contextos empresariais, com foco em otimização de recursos, análise de cenários e eficiência organizacional. O programa reforça a capacidade de traduzir dados em estratégia, apoiando líderes na construção de soluções inteligentes e baseadas em evidências.</p>
+                      </div>
+                    </div>
+                    {expandedTabs.formacao && (
+                      <div className="flex flex-col gap-10">
+                        <div className="flex lg:flex-row flex-col py-5 gap-5">
+                          <div className="flex flex-[1] flex-col gap-5">
+                            <p className="text-azul font-bold text-[22px] leading-[32px] ">Unileya – MBA em Shipping e Gestão Portuária</p>
+                          </div>
+                          <div className="flex flex-col gap-6 flex-[2]">
+                            <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Especialização executiva em comércio marítimo e logística internacional.</p>
+                            <p className="text-azul  text-[16px] leading-[24px]">MBA que aborda de forma integrada os aspectos operacionais, estratégicos e regulatórios do setor marítimo, com foco em eficiência logística e sustentabilidade portuária. A formação fortalece a visão executiva sobre cadeias globais de suprimentos, governança portuária e inovação no transporte marítimo.</p>
+                          </div>
+                        </div>
+                        <div className="flex lg:flex-row flex-col py-5 gap-5">
+                          <div className="flex flex-[1] flex-col gap-5">
+                            <p className="text-azul font-bold text-[22px] leading-[32px] ">Pontifícia Universidade Católica do Rio de Janeiro – BI Master</p>
+                          </div>
+                          <div className="flex flex-col gap-6 flex-[2]">
+                            <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Pós-graduação em Business Intelligence e sistemas de apoio à decisão.</p>
+                            <p className="text-azul  text-[16px] leading-[24px]">Programa voltado ao desenvolvimento de competências em análise de dados, modelagem de indicadores e suporte à decisão empresarial. A formação consolidou o domínio de tecnologias de BI e data analytics, fundamentais para impulsionar a transformação digital e a inteligência estratégica nas organizações.</p>
+                          </div>
+                        </div>
+                        <div className="flex lg:flex-row flex-col py-5 gap-5">
+                          <div className="flex flex-[1] flex-col gap-5">
+                            <p className="text-azul font-bold text-[22px] leading-[32px] ">Universidade Federal  do Rio de Janeiro – Bacharelado em Administração</p>
+                          </div>
+                          <div className="flex flex-col gap-6 flex-[2]">
+                            <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Formação de base em gestão empresarial, estratégia e finanças corporativas.</p>
+                            <p className="text-azul  text-[16px] leading-[24px]">Graduação em Administração, com foco em fundamentos de gestão, economia e planejamento estratégico. A formação serviu como alicerce para uma trajetória executiva pautada em governança, inovação e liderança organizacional, consolidando a visão sistêmica necessária para conduzir projetos de grande porte.</p>
+                          </div>
+                        </div>
+                        <div className="flex lg:flex-row flex-col py-5 gap-5">
+                          <div className="flex flex-[1] flex-col gap-5">
+                            <p className="text-azul font-bold text-[22px] leading-[32px] ">Organização das Nações Unidas (ONU) – Empretec Program</p>
+                          </div>
+                          <div className="flex flex-col gap-6 flex-[2]">
+                            <p className="text-[#333333] font-bold text-[16px] leading-[24px]">Resumo: Programa internacional de desenvolvimento de comportamento empreendedor.</p>
+                            <p className="text-azul  text-[16px] leading-[24px]">Treinamento intensivo da ONU voltado à formação de líderes e empreendedores de alto desempenho, com ênfase em autogestão, inovação e mentalidade de crescimento. A experiência reforçou competências em resiliência, iniciativa e execução estratégica, aplicadas ao contexto corporativo e de inovação tecnológica.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div className="h-[1px] bg-[#E7E7E6]"></div>
+                    <button
+                      onClick={() => toggleExpand("formacao")}
+                      className="flex justify-center items-center rounded-[4px] border border-azul bg-white text-azul w-full py-2 hover:bg-[#BEDDFF]"
+                    >
+                  {expandedTabs.formacao ? "Ver menos" : "Ver tudo"}
+                </button>
+                  </div>
+                )}
+                {selectedTab === "eventos" && (
+                  <div className="flex flex-col gap-5 lg:w-[720px]">
+                    <div className="flex flex-col gap-6">
+                      <p className="text-[#7BBCFE] text-[32px] leading-[40px]">Eventos e Publicações de Relevância Profissional</p>
+                      <p className="text-[#333333] text-[16px] leading-[22px]">Minha trajetória inclui participação e protagonismo em eventos nacionais e internacionais voltados à logística marítima, inovação tecnológica, pesquisa operacional e transformação digital. Essas experiências reforçam minha atuação como executivo e pesquisador, com presença ativa em fóruns estratégicos e acadêmicos de alto impacto.</p>
+                    </div>
+                    <div className="flex flex-col py-5 gap-5">
+                      <div className="flex items-center lg:flex-row flex-col gap-5">
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            London International Shipping Week 2025 – Reino Unido
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em um dos principais eventos globais sobre transporte marítimo e inovação logística.
+                          </p>
+                        </div>
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            IMO Conference – London International Shipping Week 2025
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação na conferência oficial da Organização Marítima Internacional (IMO) com foco em sustentabilidade e digitalização do setor marítimo.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center lg:flex-row flex-col gap-5">
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Seminário “O Novo Processo de Importação – DUIMP” 2024
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em fórum técnico sobre modernização e integração digital no comércio exterior brasileiro.
+                          </p>
+                        </div>
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            DataSmart Shipping 2025 – Palestrante Convidado
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Apresentação sobre o impacto da Inteligência Artificial e Pesquisa Operacional na transformação digital da logística marítima.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center lg:flex-row flex-col gap-5">
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Seminário Internacional OEA 2025
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em evento sobre certificação de operadores econômicos autorizados e eficiência logística global.
+                          </p>
+                        </div>
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Fórum ILOS 2025
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em fórum de referência em logística e supply chain, discutindo tendências tecnológicas e estratégias de mercado.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center lg:flex-row flex-col gap-5">
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Fórum ILOS 2024
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em debates sobre inovação e competitividade no setor logístico brasileiro.
+                          </p>
+                        </div>
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Intermodal South America 2024
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em feira internacional de transporte e comércio exterior, com foco em automação e eficiência operacional.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center lg:flex-row flex-col gap-5">
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Data & AI Forum – Oracle Brasil
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Participação em fórum corporativo sobre aplicações de dados e inteligência artificial no contexto empresarial.
+                          </p>
+                        </div>
+                        <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                          <p className="text-azul text-[20px] leading-[28px]">
+                            Dataliner Seminar 2023 – Palestrante Convidado
+                          </p>
+                          <p className="text-[#333333] text-[16px] leading-[24px]">
+                            Apresentação sobre tendências em digitalização e análise de dados na cadeia logística marítima.
+                          </p>
+                        </div>
+                      </div>
+                        {expandedTabs.eventos && (
+                          <div className="flex flex-col gap-5">
+                            <div className="flex items-center lg:flex-row flex-col gap-5">
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  Dataliner Seminar OTIs – Ocean Transport Intermediaries 2023
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Palestra sobre transformação digital e uso de dados para otimização de intermediários de transporte marítimo.
+                                </p>
+                              </div>
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  Dataliner Seminar Exporters & Importers 2023
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Palestrante convidado em painel sobre inovação tecnológica e eficiência na operação de exportadores e importadores.
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center lg:flex-row flex-col gap-5">
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  AWS Summit 2023 – São Paulo
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Participação em evento global sobre computação em nuvem, inovação e transformação digital corporativa.
+                                </p>
+                              </div>
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  Microsoft  Event 2023
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Participação em encontro voltado à adoção de tecnologias Microsoft para modernização de processos empresariais.
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center lg:flex-row flex-col gap-5">
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  Minitab Exchange Brasil 2023
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Participação em conferência sobre estatística aplicada, análise de dados e melhoria contínua em processos corporativos.
+                                </p>
+                              </div>
+                              <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] max-w-[348px] rounded-[4px] h-[240px]">
+                                <p className="text-azul text-[20px] leading-[28px]">
+                                  Intermodal South America 2023
+                                </p>
+                                <p className="text-[#333333] text-[16px] leading-[24px]">
+                                  Participação em evento técnico de transporte e comércio exterior, com foco em digitalização e integração logística.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      <button
+                        onClick={() => toggleExpand("eventos")}
+                        className="flex justify-center items-center rounded-[4px] border border-azul bg-white text-azul w-full py-2 hover:bg-[#BEDDFF]"
+                      >
+                        {expandedTabs.eventos ? "Ver menos" : "Ver tudo"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {selectedTab === "publicacoes" && (
+                  <div className="flex flex-col gap-5 lg:w-[720px]">
+                    <div className="flex flex-col gap-6">
+                      <p className="text-[#7BBCFE] text-[32px] leading-[40px]">Publicações e Produções Acadêmicas</p>
+                      <p className="text-[#333333] text-[16px] leading-[22px]">Minhas publicações refletem o compromisso em integrar a prática executiva com a pesquisa científica, explorando temas como inovação tecnológica, logística marítima, inteligência artificial e métodos multicritério de decisão. Cada artigo representa um passo na construção de conhecimento aplicado, voltado a aprimorar a gestão e a competitividade no setor marítimo e logístico.</p>
+                    </div>
+                    <div className="flex flex-col py-5 gap-5">
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica - SBPO 2025 – Sociedade Brasileira de Pesquisa Operacional - Priorização no Desenvolvimento de Produtos Digitais alinhados às OKRs Corporativas a partir do Método SAPEVO-H2
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          O artigo propõe um modelo que integra o framework OKR ao método multicritério SAPEVO-H2 para apoiar a priorização de projetos digitais alinhados aos objetivos organizacionais. 
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica -Congresso Nacional de Excelência em Gestão & INOVARSE (2025)–  Competitividade Sustentável na Indústria Naval e Offshore Brasileira: Uma Análise Integrada de Ferramentas Estratégicas Aplicadas ao Programa TP 25
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          O artigo  propõe um quadro metodológico inovador, combinando cinco ferramentas estratégicas (SWOT, Porter, BCG, PESTEL e Timeline), para identificar fatores críticos para a competitividade sustentável do setor, utilizando o TP 25 como estudo de caso.
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica -Congresso Nacional de Excelência em Gestão & INOVARSE (2025) –  Programa operador econômico autorizado (OEA) no Brasil: evolução, limitações e caminhos para maior efetividade
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          Este artigo apresenta uma análise crítica do OEA no Brasil, articulando revisão teórica, experiências internacionais e dados estatísticos oficiais. Os resultados evidenciam avanços relevantes, como a expressiva redução do tempo de desembaraço aduaneiro e o crescimento no número de certificações. 
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica - Simpósio de Engenharia de Produção 2024 –  O uso do método de análise hierárquica (AHP) na seleção do banco de dados para um projeto de IT
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          Apresentação de artigo voltado à aplicação de modelos quantitativos na gestão de processos industriais e logísticos.
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica – PSI-CoCoSo Method in Aeromedical Rescue Aircraft Selection (ICMCSI 2024)
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          Artigo publicado em conferência internacional sobre métodos multicritério aplicados à seleção de aeronaves para resgate offshore. 
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica – Assessment of Higher Education Institutions Based on RUF Rankings (ICMCSI 2024)
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          Estudo publicado em conferência internacional aplicando o método Thor 2 na avaliação de instituições de ensino superior. 
+                        </p>
+                      </div>
+                      <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                        <p className="text-azul text-[20px] leading-[28px]">
+                          Publicação Científica – PSI-CoCoSo Hybrid Method for Light Fleet Supplier Selection (ICMCSI 2024)
+                        </p>
+                        <p className="text-[#333333] text-[16px] leading-[24px]">
+                          Artigo técnico sobre o uso de métodos híbridos de decisão multicritério para gestão de fornecedores em centros logísticos. 
+                        </p>
+                      </div>
+                      {expandedTabs.publicacoes && (
+                        <div className="flex flex-col py-5 gap-5">
+                          <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                            <p className="text-azul text-[20px] leading-[28px]">
+                              Publicação Científica – Evaluation of Imagers for Helicopters of the Military Police (ICMCSI 2024)
+                            </p>
+                            <p className="text-[#333333] text-[16px] leading-[24px]">
+                              Pesquisa aplicada ao uso do método PSI-CoCoSo na avaliação de equipamentos ópticos para aviação policial.
+                            </p>
+                          </div>
+                          <div className="bg-white flex flex-1 flex-col gap-5 p-3 border border-[#E6E6E6] w-full rounded-[4px]">
+                            <p className="text-azul text-[20px] leading-[28px]">
+                              Publicação Científica – PSI-SPOTIS Hybrid Method for Ranking the Best Companies to Work For (ICMCSI 2024)
+                            </p>
+                            <p className="text-[#333333] text-[16px] leading-[24px]">
+                              Estudo multicritério inédito sobre avaliação organizacional e clima corporativo, apresentado em conferência internacional.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    <button
+                      onClick={() => toggleExpand("publicacoes")}
+                      className="flex justify-center items-center rounded-[4px] border border-azul bg-white text-azul w-full py-2 hover:bg-[#BEDDFF]"
+                    >
+                      {expandedTabs.publicacoes ? "Ver menos" : "Ver tudo"}
+                    </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
+          
           <div className="bg-white flex justify-center">
             <div className="w-full max-w-[1440px] flex flex-col py-4 lg:py-[64px] lg:px-[96px] px-4 items-center  gap-12">
               <div className="flex flex-col gap-6 items-center text-center">
@@ -295,6 +608,46 @@ export default function Home() {
                 </div>
               </div>
 
+            </div>
+          </div>
+          <div className="bg-[#EFF6FF] flex justify-center">
+            <div className="w-full max-w-[1440px] p-4 lg:py-[64px] lg:px-[96px] flex flex-col gap-8 justify-center">
+              <div className="flex flex-col items-center gap-[48px]">
+                <div className="flex flex-col gap-4 text-center">
+                  <p className=" text-azul text-[40px] leading-[52px]">Vamos conversar?</p>
+                  <p>Sua dúvida, sugestão ou projeto é importante para nós.</p>
+                </div>
+                <div className="bg-white border border-[#E1E4ED] p-8 flex flex-col rounded-[6px] gap-8 max-w-[590px]">
+                  <p className="text-[#333333] text-[16px] leading-[22px] text-center">Entre em contato através das informações de contato.</p>
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex gap-4">
+                      <img className="w-[48px] h-[48px]" src="/Email.svg" alt="" />
+                      <div className="flex flex-col gap-2">
+                        <p className="text-[#333333] text-[16px] leading-[24px]">E-mail:</p>
+                        <p className="text-azul font-medium text-[16px] leading-[22px]">contato@mprlsilva.com</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <img className="w-[48px] h-[48px]" src="/Phone.svg" alt="" />
+                      <div className="flex flex-col gap-2">
+                        <p className="text-[#333333] text-[16px] leading-[24px]">Telefone:</p>
+                        <p className="text-azul font-medium text-[16px] leading-[22px]">+55 (21) 96475-7037</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <p className="text-azul font-bold text-[22px] leading-[32px] text-center">Siga nas redes sociais</p>
+                  <div className="flex gap-4 justify-center">
+                      <a className="bg-azul p-1 rounded-[4px]" href="https://www.instagram.com/mprls_silva/" target="_blank" rel="noopener noreferrer">
+                          <img src="/1.35 - Social media (2).svg" alt="" />
+                      </a>
+                      <a className="bg-azul p-1 rounded-[4px]" href="https://www.linkedin.com/in/mprlsilva/" target="_blank" rel="noopener noreferrer">
+                          <img src="/1.35 - Social media (3).svg" alt="" />
+                      </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="bg-white flex justify-center">
