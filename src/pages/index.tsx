@@ -49,7 +49,7 @@ const toggleExpand = (tab: TabKey) => {
 
             </div>
           </div>
-          <div id="sobre-mim" className="bg-white flex justify-center">
+          <div id="sobre-mim" className="bg-[#EFF6FF] flex justify-center">
             <div className="w-full max-w-[1440px] p-4 lg:py-[64px] lg:pt-[64px] lg:px-[96px] flex flex-col gap-8 lg:gap-[64px]">
               <div className="flex flex-col gap-6 lg:flex-row">
                 <div className="flex w-full lg:max-w-[402px] justify-center">
@@ -97,6 +97,43 @@ const toggleExpand = (tab: TabKey) => {
                   </div>
                 </div>
               </div>
+              <div className="flex flex-col gap-10 p-4 border border-azul rounded-[10px]">
+                <div className="flex justify-center lg:justify-start gap-4">
+                  <div className="flex-shrink-0 w-[100px] h-[100px]">
+                    <img
+                      className="w-full h-full object-contain"
+                      src="/dama_international007_logo 1.svg"
+                      alt="Logo DAMA"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <p className="text-[22px] leading-[32px] text-azul">
+                      Membro da DAMA International – The Global Data Management Community
+                    </p>
+                    <p className="text-[16px] leading-[24px] text-[#333333]">
+                      Com sólida experiência em tecnologia e inovação, tenho aprofundado minha atuação em gestão e governança de dados, alinhando práticas globais às necessidades estratégicas das organizações. A filiação à DAMA International reforça o acesso às melhores práticas, frameworks reconhecidos e insights de especialistas, garantindo uma abordagem de excelência em data management.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-center lg:justify-start gap-4">
+                  <div className="flex-shrink-0 w-[100px] h-[100px]">
+                    <img
+                      className="w-full h-full object-contain"
+                      src="/journal_of_the_operational_research_society_logo 1.svg"
+                      alt="Logo DAMA"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <p className="text-[22px] leading-[32px] text-azul">
+                      Membro da The Operational Research Society (ORS)
+                    </p>
+                    <p className="text-[16px] leading-[24px] text-[#333333]">
+                      Ser membro da Operational Research Society (ORS) fortalece minha capacidade de aplicar metodologias avançadas de Pesquisa Operacional para gerar impacto estratégico nas organizações, otimizando processos complexos, reduzindo custos, melhorando a alocação de recursos e aumentando a eficiência operacional. A associação oferece acesso a pesquisas de ponta, frameworks reconhecidos e eventos especializados, garantindo que a análise de dados e modelos quantitativos estejam alinhados às melhores práticas globais.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <div id="experiencia" className="bg-azul flex justify-center">
@@ -167,7 +204,7 @@ const toggleExpand = (tab: TabKey) => {
                         : "text-[#737373] hover:text-azul"
                     }`}
                   >
-                    Eventos e Publicações de Relevância Profissional
+                    Eventos de Relevância Profissional
                   </button>
 
                   <button
@@ -278,7 +315,7 @@ const toggleExpand = (tab: TabKey) => {
                 {selectedTab === "eventos" && (
                   <div className="flex flex-col gap-5 lg:w-[720px]">
                     <div className="flex flex-col gap-6">
-                      <p className="text-[#7BBCFE] text-[32px] leading-[40px]">Eventos e Publicações de Relevância Profissional</p>
+                      <p className="text-[#7BBCFE] text-[32px] leading-[40px]">Eventos de Relevância Profissional</p>
                       <p className="text-[#333333] text-[16px] leading-[22px]">Minha trajetória inclui participação e protagonismo em eventos nacionais e internacionais voltados à logística marítima, inovação tecnológica, pesquisa operacional e transformação digital. Essas experiências reforçam minha atuação como executivo e pesquisador, com presença ativa em fóruns estratégicos e acadêmicos de alto impacto.</p>
                     </div>
                     <div className="flex flex-col py-5 gap-5">
